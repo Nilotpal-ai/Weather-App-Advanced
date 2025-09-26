@@ -5,6 +5,7 @@ from sqlalchemy import create_engine, Column, Integer, String, Float, Date, Date
 from sqlalchemy.orm import sessionmaker, declarative_base, Session
 import datetime, httpx, csv, io
 from typing import Optional
+import psycopg
 
 DATABASE_URL = "postgresql://weather_postgresql_advanced_user:z7errdZxW5cnUXq3Hs2B7h5mS9FVkF7x@dpg-d3b6ss0gjchc73f9vodg-a.oregon-postgres.render.com/weather_postgresql_advanced"
 OPENWEATHER_API_KEY = "f33a92d1f423e75d96185317f09987f7"  # For live weather fetching if needed
@@ -259,5 +260,6 @@ def export_md(db: Session = Depends(get_db)):
         md += f"- **Created At**: {r.created_at}\n\n"
     return Response(md, media_type="text/markdown",
                     headers={"Content-Disposition": "attachment; filename=weather.md"})
+
 
 
