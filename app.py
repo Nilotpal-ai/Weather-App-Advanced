@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base, Session
 import datetime, httpx, csv, io
 from typing import Optional
 
-DATABASE_URL = "postgresql://postgres:Paradus2%40123@localhost:5432/weatherdb"
+DATABASE_URL = "postgresql://postgres:mPIvWQxXgWMfGgkaediaeColxajpvILh@yamanote.proxy.rlwy.net:32590/railway"
 OPENWEATHER_API_KEY = "f33a92d1f423e75d96185317f09987f7"  # For live weather fetching if needed
 templates = Jinja2Templates(directory="templates")
 engine = create_engine(DATABASE_URL)
@@ -259,3 +259,4 @@ def export_md(db: Session = Depends(get_db)):
         md += f"- **Created At**: {r.created_at}\n\n"
     return Response(md, media_type="text/markdown",
                     headers={"Content-Disposition": "attachment; filename=weather.md"})
+
