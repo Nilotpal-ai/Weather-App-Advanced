@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Create Weather Record</h2>
+{% if error %}
+    <p class="error">{{ error }}</p>
+{% endif %}
+<form method="post" action="/create">
+    <label>Location:</label><br>
+    <input type="text" name="location" required><br><br>
+    <label>Start Date (YYYY-MM-DD):</label><br>
+    <input type="date" name="start_date" required><br><br>
+    <label>End Date (YYYY-MM-DD):</label><br>
+    <input type="date" name="end_date" required><br><br>
+    <label>Minimum Temperature (optional):</label><br>
+    <input type="number" step="0.1" name="temperature_min"><br><br>
+    <label>Maximum Temperature (optional):</label><br>
+    <input type="number" step="0.1" name="temperature_max"><br><br>
+    <button type="submit">Create</button>
+</form>
+<a href="/">Back to list</a>
+{% endblock %}
